@@ -100,9 +100,36 @@ Travis will run and test:
 
 # Previewing a Pull Request
 
-Netlify is used to provide a link to a rendered website with the changes proposed
-in a PR. This convenience helps reviewers see how the change would look
-before it is deployed in production.
+Cloudflare Pages is used to provide a link to a rendered website with the
+changes proposed in a PR. This convenience helps reviewers see how the change
+would look before it is deployed in production. Cloudflare only hosts these
+previews — the production site at jupyter.org is still built and served by
+GitHub Pages from the `master` branch.
 
-The link is found in the GitHub PR status box. In the **deploy/netlify** section,
-click on the `Details` link.
+When a PR is opened or updated, GitHub Actions builds the site
+(`.github/workflows/preview-build.yml`) and uploads the result to Cloudflare
+Pages (`.github/workflows/preview-deploy.yml`). A bot comment on the PR links
+to the preview at `https://pr-<number>.<project>.pages.dev`, and the preview
+is refreshed on every new commit.
+
+## Preview infrastructure setup (maintainers)
+
+The preview workflows need a Cloudflare Pages project and two repository
+secrets. To set them up (or rotate them):
+
+1. In the Cloudflare dashboard, under an organization-managed account, create
+   a Pages project using **Direct Upload** (not connected to this git
+   repository) named `jupyter-website-previews` (this name is set in
+   `.github/workflows/preview-deploy.yml`). Do not attach a custom domain to
+   the project. Alternatively, create it from a terminal with
+   `npx wrangler pages project create jupyter-website-previews`.
+2. Create an API token (User Profile → API Tokens) with the **Cloudflare
+   Pages: Edit** permission, scoped to that account.
+3. In this repository's settings (Settings → Secrets and variables →
+   Actions), add the secrets:
+   - `CLOUDFLARE_API_TOKEN`: the token from step 2
+   - `CLOUDFLARE_ACCOUNT_ID`: the account ID shown in the Cloudflare
+     dashboard
+
+The deploy workflow never checks out or runs code from pull requests, so the
+Cloudflare token is not exposed to PRs from forks.
