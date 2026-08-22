@@ -19,3 +19,10 @@ include: [".well-known"]
 
 plugins:
   - jekyll-redirect-from
+  - jekyll-feed
+
+# Blog settings
+permalink: /blog/:year/:month/:day/:title/
+feed:
+  path: blog/feed.xml
+  posts_limit: 20
