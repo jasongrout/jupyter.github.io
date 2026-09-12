@@ -1,24 +1,19 @@
-  <p>
 <style>
-  .jp-events ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  .jp-eventbar-9f3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 0.7em;
   }
-  .jp-events li:not(:last-child)::after {
+  .jp-eventbar-9f3 > span:not(:last-child)::after {
     content: "\2022";
     margin-left: 0.7em;
   }
 </style>
 
-<nav class="jp-events" aria-label="Upcoming Jupyter events">
-  <ul>
-    <li><a href="https://events.linuxfoundation.org/open-source-summit-europe/features/co-located-events/#jupyter-mini-summit">Jupyter Mini Summit</a>, Oct 6, Prague</li>
-    <li><a href="https://events.linuxfoundation.org/jupyter-day/">Jupyter Day</a>, Oct 19, San Jose</li>
-  </ul>
-</nav>
-  </p>
+<p>
+  <span class="jp-eventbar-9f3" role="list">
+    <span role="listitem"><a href="https://events.linuxfoundation.org/open-source-summit-europe/features/co-located-events/#jupyter-mini-summit">Jupyter Mini Summit</a>, Oct 6, Prague</span>
+    <span role="listitem"><a href="https://events.linuxfoundation.org/jupyter-day/">Jupyter Day</a>, Oct 19, San Jose</span>
+  </span>
+</p>
