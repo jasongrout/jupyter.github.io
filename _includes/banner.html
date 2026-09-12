@@ -1,3 +1,24 @@
   <p>
-    Join us at <a href="https://events.linuxfoundation.org/open-source-summit-europe/features/co-located-events/#jupyter-mini-summit">Jupyter Mini Summit</a>, Oct 6 in Prague, or <a href="https://events.linuxfoundation.org/jupyter-day/">Jupyter Day</a>, Oct 19 in San Jose.
+<style>
+  .jp-events ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 0.7em;
+  }
+  .jp-events li:not(:last-child)::after {
+    content: "\2022";
+    margin-left: 0.7em;
+  }
+</style>
+
+<nav class="jp-events" aria-label="Upcoming Jupyter events">
+  <ul>
+    <li><a href="https://events.linuxfoundation.org/open-source-summit-europe/features/co-located-events/#jupyter-mini-summit">Jupyter Mini Summit</a>, Oct 6, Prague</li>
+    <li><a href="https://events.linuxfoundation.org/jupyter-day/">Jupyter Day</a>, Oct 19, San Jose</li>
+  </ul>
+</nav>
   </p>
