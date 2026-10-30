@@ -5,3 +5,8 @@ summary {
   display: list-item;
   cursor: pointer;
 }
+
+// Indent disclosed content
+details > :not(summary) {
+  margin-left: 1.5em;
+}
